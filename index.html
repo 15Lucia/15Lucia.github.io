@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#fbf7f4">
+  <title>Mis 15 | Lucía</title>
+  <meta name="description" content="Invitación a los 15 años de Lucía. Sábado 4 de Octubre · 21:00 hs · El Marquez Eventos.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mis 15 | Lucía">
+  <meta property="og:description" content="Sábado 4 de Octubre · 21:00 hs · El Marquez Eventos">
+  <meta property="og:url" content="https://lucia.github.io/lucia15/">
+  <meta property="og:image" content="https://lucia.github.io/lucia15/share-preview.png?v=9">
+  <meta property="og:image:alt" content="Invitación a los 15 años de Lucía">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://lucia.github.io/lucia15/share-preview.png?v=9">
+
+  <style>
+    :root{
+      --bg1:#fffdfb;
+      --bg2:#fbf7f4;
+      --shadow:0 14px 32px rgba(83,55,91,.08);
+    }
+
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%}
+    body{
+      background:
+        radial-gradient(circle at 20% 15%, rgba(234,215,238,.20), transparent 28rem),
+        radial-gradient(circle at 80% 85%, rgba(245,219,229,.16), transparent 24rem),
+        linear-gradient(160deg,var(--bg1) 0%, var(--bg2) 55%, var(--bg1) 100%);
+      font-family:Arial, Helvetica, sans-serif;
+      color:#4b4050;
+    }
+
+    .page{
+      min-height:100svh;
+      display:grid;
+      place-items:center;
+      padding:
+        max(18px, env(safe-area-inset-top))
+        clamp(12px, 2vw, 24px)
+        max(24px, env(safe-area-inset-bottom));
+    }
+
+    .version{
+      position:relative;
+      display:none;
+      width:100%;
+      max-width:520px;
+      margin-inline:auto;
+    }
+    .version.active{display:block}
+
+    .art{
+      display:block;
+      width:100%;
+      height:auto;
+      border-radius:18px;
+      box-shadow:var(--shadow);
+    }
+
+    .hotspot{
+      position:absolute;
+      display:block;
+      background:transparent;
+      border:0;
+      cursor:pointer;
+      text-indent:-9999px;
+      overflow:hidden;
+    }
+
+    /* Mobile exact */
+    #mobile{max-width:499px}
+    #mobile .map{left:40.2%; top:63.8%; width:29.0%; height:3.7%}
+    #mobile .wa{left:11.4%; top:72.0%; width:77.6%; height:6.5%; border-radius:999px}
+    #mobile .gift{left:44.8%; top:87.0%; width:10.8%; height:6.4%; border-radius:50%}
+
+    /* Tablet exact */
+    #tablet{max-width:744px}
+    #tablet .map{left:70.7%; top:66.7%; width:23.0%; height:4.4%}
+    #tablet .wa{left:20.1%; top:74.3%; width:70.0%; height:7.4%; border-radius:999px}
+    #tablet .gift{left:49.2%; top:92.1%; width:10.8%; height:7.5%; border-radius:50%}
+
+    /* Desktop exact */
+    #desktop{max-width:1180px}
+    #desktop .map{left:76.0%; top:51.7%; width:13.3%; height:6.1%}
+    #desktop .wa{left:32.7%; top:63.1%; width:34.5%; height:9.7%; border-radius:999px}
+    #desktop .gift{left:46.4%; top:87.5%; width:7.0%; height:11.2%; border-radius:50%}
+
+    @media (max-width: 699px){
+      #mobile{display:block}
+    }
+    @media (min-width: 700px) and (max-width: 1099px){
+      #tablet{display:block}
+    }
+    @media (min-width: 1100px){
+      #desktop{display:block}
+    }
+
+    /* Modal regalo */
+    .modal-backdrop{
+      position:fixed; inset:0; z-index:50;
+      display:none; align-items:center; justify-content:center;
+      padding:22px;
+      background:rgba(25,18,30,.60);
+      backdrop-filter:blur(5px);
+      -webkit-backdrop-filter:blur(5px);
+    }
+    .modal-backdrop.open{display:flex}
+    .modal{
+      position:relative;
+      width:min(100%, 440px);
+      border-radius:24px;
+      border:1px solid rgba(194,145,59,.62);
+      background:#fffdfa;
+      box-shadow:0 22px 60px rgba(25,18,30,.28);
+      padding:28px 24px 24px;
+      text-align:center;
+    }
+    .modal h2{
+      margin:2px 0 6px;
+      color:#5a2866;
+      font:700 30px/1.1 Georgia, serif;
+    }
+    .modal p{
+      margin:8px 0;
+      font:15px/1.45 Arial, Helvetica, sans-serif;
+      color:#5b5060;
+    }
+    .alias-box{
+      margin:18px 0 8px;
+      border-radius:16px;
+      border:1px solid rgba(122,66,137,.22);
+      background:#f5edf7;
+      padding:15px 14px;
+    }
+    .alias{
+      display:block;
+      color:#315d55;
+      font:700 22px/1.2 Arial, Helvetica, sans-serif;
+    }
+    .holder{
+      display:block;
+      margin-top:5px;
+      color:#594d5e;
+      font:600 14px/1.3 Arial, Helvetica, sans-serif;
+    }
+    .verify{
+      font-size:13px !important;
+      color:#6b606f !important;
+    }
+    .modal-actions{
+      display:grid;
+      gap:10px;
+      margin-top:16px;
+    }
+    .modal-actions button{
+      min-height:48px;
+      border:0;
+      border-radius:999px;
+      cursor:pointer;
+      font:700 15px Arial, Helvetica, sans-serif;
+    }
+    .copy{
+      color:#fff;
+      background:linear-gradient(135deg, #683576, #884895);
+    }
+    .close2{
+      color:#5b4d61;
+      background:#f1ebf3;
+    }
+    .close-x{
+      position:absolute;
+      top:12px; right:12px;
+      width:38px; height:38px;
+      border:0; border-radius:50%;
+      background:#f3edf4;
+      color:#624d69;
+      font-size:24px;
+      cursor:pointer;
+    }
+    .toast{
+      position:fixed;
+      z-index:70;
+      left:50%;
+      bottom:calc(22px + env(safe-area-inset-bottom));
+      transform:translate(-50%, 18px);
+      opacity:0;
+      pointer-events:none;
+      padding:11px 16px;
+      border-radius:999px;
+      background:#30413c;
+      color:#fff;
+      font:600 14px Arial, Helvetica, sans-serif;
+      transition:.2s ease;
+    }
+    .toast.show{
+      opacity:1;
+      transform:translate(-50%, 0);
+    }
+    @media (prefers-reduced-motion: reduce){
+      .toast{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+
+    <section class="version" id="mobile" aria-label="Versión mobile">
+      <img class="art" src="design-mobile.png" alt="Invitación a los 15 años de Lucía">
+      <a class="hotspot map" href="https://www.google.com/maps/place/El+Marquez+Eventos/@-32.9010288,-68.81782,829m/data=!3m2!1e3!4b1!4m6!3m5!1s0x967e0f13307adb0f:0xbce3311cac96b174!8m2!3d-32.9010288!4d-68.8152397!16s%2Fg%2F11ppczyjcj?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Ver ubicación</a>
+      <a class="hotspot wa" href="https://wa.me/5492616349715?text=Confirmamos%20Asistencia%21%21%21" target="_blank" rel="noopener noreferrer">Confirmar asistencia</a>
+      <button class="hotspot gift gift-trigger" type="button">Regalo</button>
+    </section>
+
+    <section class="version" id="tablet" aria-label="Versión tablet">
+      <img class="art" src="design-tablet.png" alt="Invitación a los 15 años de Lucía">
+      <a class="hotspot map" href="https://www.google.com/maps/place/El+Marquez+Eventos/@-32.9010288,-68.81782,829m/data=!3m2!1e3!4b1!4m6!3m5!1s0x967e0f13307adb0f:0xbce3311cac96b174!8m2!3d-32.9010288!4d-68.8152397!16s%2Fg%2F11ppczyjcj?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Ver ubicación</a>
+      <a class="hotspot wa" href="https://wa.me/5492616349715?text=Confirmamos%20Asistencia%21%21%21" target="_blank" rel="noopener noreferrer">Confirmar asistencia</a>
+      <button class="hotspot gift gift-trigger" type="button">Regalo</button>
+    </section>
+
+    <section class="version" id="desktop" aria-label="Versión desktop">
+      <img class="art" src="design-desktop.png" alt="Invitación a los 15 años de Lucía">
+      <a class="hotspot map" href="https://www.google.com/maps/place/El+Marquez+Eventos/@-32.9010288,-68.81782,829m/data=!3m2!1e3!4b1!4m6!3m5!1s0x967e0f13307adb0f:0xbce3311cac96b174!8m2!3d-32.9010288!4d-68.8152397!16s%2Fg%2F11ppczyjcj?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">Ver ubicación</a>
+      <a class="hotspot wa" href="https://wa.me/5492616349715?text=Confirmamos%20Asistencia%21%21%21" target="_blank" rel="noopener noreferrer">Confirmar asistencia</a>
+      <button class="hotspot gift gift-trigger" type="button">Regalo</button>
+    </section>
+
+  </main>
+
+  <div class="modal-backdrop" id="giftModal" role="dialog" aria-modal="true" aria-labelledby="giftTitle">
+    <div class="modal">
+      <button class="close-x" id="closeModal" type="button" aria-label="Cerrar">×</button>
+      <h2 id="giftTitle">Un detalle con cariño</h2>
+      <p>Si querés hacerle un presente a Lucía, podés usar este alias de Mercado Pago:</p>
+
+      <div class="alias-box">
+        <span class="alias">Lu.cia3.mp</span>
+        <span class="holder">Lucía Abigail Trillini</span>
+      </div>
+
+      <p class="verify">Antes de confirmar la transferencia, verificá que Mercado Pago muestre como titular a <strong>Lucía Abigail Trillini</strong>.</p>
+
+      <div class="modal-actions">
+        <button class="copy" id="copyAlias" type="button">Copiar alias</button>
+        <button class="close2" id="closeModal2" type="button">Cerrar</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Alias copiado</div>
+
+  <script>
+    const giftModal = document.getElementById("giftModal");
+    const giftButtons = document.querySelectorAll(".gift-trigger");
+    const closeModal = document.getElementById("closeModal");
+    const closeModal2 = document.getElementById("closeModal2");
+    const copyAlias = document.getElementById("copyAlias");
+    const toast = document.getElementById("toast");
+    const alias = "Lu.cia3.mp";
+
+    function openGift(){
+      giftModal.classList.add("open");
+      document.body.style.overflow = "hidden";
+      closeModal.focus();
+    }
+    function closeGift(){
+      giftModal.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    function showToast(){
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1700);
+    }
+    async function copyAliasToClipboard(){
+      try{
+        await navigator.clipboard.writeText(alias);
+      }catch(err){
+        const area = document.createElement("textarea");
+        area.value = alias;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        document.execCommand("copy");
+        document.body.removeChild(area);
+      }
+      showToast();
+      copyAlias.textContent = "Alias copiado ✓";
+      setTimeout(() => copyAlias.textContent = "Copiar alias", 1800);
+    }
+
+    giftButtons.forEach(btn => btn.addEventListener("click", openGift));
+    closeModal.addEventListener("click", closeGift);
+    closeModal2.addEventListener("click", closeGift);
+    copyAlias.addEventListener("click", copyAliasToClipboard);
+
+    giftModal.addEventListener("click", (e) => {
+      if(e.target === giftModal) closeGift();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && giftModal.classList.contains("open")) closeGift();
+    });
+  </script>
+</body>
+</html>
